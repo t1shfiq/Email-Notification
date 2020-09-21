@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import smtplib
+import time
 
 URL = 'https://www.amazon.ca/Computer-Monitors-328E1CA-Adaptive-Sync-Replacement/dp/B07VLJPZDR/ref=sr_1_6?dchild=1&keywords=4k+monitor&qid=1600659292&sr=8-6'
 
@@ -20,10 +21,6 @@ def check_price():
 
         print(converted_price)
         print(title)
-
-    if(converted_price > 400):
-        send_mail
-
 
 def send_mail():
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -47,3 +44,6 @@ def send_mail():
 
         server.quit()
 
+while(True):
+    check_price()
+    time.sleep(60)
